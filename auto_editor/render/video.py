@@ -124,7 +124,7 @@ def render_av(
     log.debug(f"apply video quality settings now: {not apply_video_later}")
 
     width, height = tl.res
-    spedup = os.path.join(temp, "spedup0.mp4")
+    spedup = os.path.join(temp, "spedup0.ts")
 
     cmd = [
         "-hide_banner",
@@ -141,8 +141,14 @@ def render_av(
         f"{tl.tb}",
         "-i",
         "-",
+        "-i",
+        os.path.join(temp, "new0.wav"),
+        "-map",
+        "0:v",
         "-pix_fmt",
         target_pix_fmt,
+        "-map",
+        "1:a",
     ]
 
     if apply_video_later:

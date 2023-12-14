@@ -39,6 +39,7 @@ class Log:
             sys.stderr.write(f"Debug: {message}\n")
 
     def cleanup(self) -> None:
+        input('s')
         if self.temp is None:
             return
         try:
